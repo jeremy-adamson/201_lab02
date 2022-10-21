@@ -4,10 +4,10 @@
 // Input: String
 // Output: Returns boolean value if input string is y/n/yes/no
 
-function inputChecker(stringToCheck){
+function inputChecker(stringToCheck, acceptedAnswers){
     stringToCheck = stringToCheck.toLowerCase();
 
-    return (stringToCheck === 'y' || stringToCheck === 'n' || stringToCheck === 'yes' || stringToCheck === 'no');
+    return (acceptedAnswers.includes(stringToCheck));
 }
 
 // Purpose: To check if user input matches the correct answer
@@ -17,11 +17,11 @@ function inputChecker(stringToCheck){
 function userFeedback(userResponse, correctAnswer){
     userResponse = userResponse.toLowerCase();
 
-    if (userResponse === correctAnswer[0] || userResponse === correctAnswer[1]){
+    if (correctAnswer.includes(userResponse)){
         alert('Correct!');
         return 1;
     }
-    else{
+    else{    
         alert('Incorrect! Boo!');
         return 0;
     }
@@ -30,6 +30,7 @@ function userFeedback(userResponse, correctAnswer){
 // Setting up acceptable answer arrays
 let affirmative = ['y', 'yes'];
 let negative = ['n', 'no'];
+let acceptedAnswers = affirmative.concat(negative);
 
 let numberOfCorrect = 0;
 
@@ -57,7 +58,7 @@ let userName = prompt('Hello! What is you name?');
 // Main loop to cycle through the questions
 for (let i = 0; i < questions.length;  i++){
     let ans = prompt(questions[i]);
-    while (!inputChecker(ans)){
+    while (!inputChecker(ans, acceptedAnswers)){
         alert('Please provide a valid input y/n/yes/no');
         ans = prompt(questions[i]);
     }
