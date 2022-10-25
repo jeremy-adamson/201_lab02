@@ -116,9 +116,11 @@ while (attempts <= numberOfGuessesList && !found){
     let guessesLeft = numberOfGuessesList - attempts;    
     let ans = prompt('Guess one of my top 3 favorite discs:');
 
+    // Checking if the user guessed a value which is in the acceptableDiscs array
     for (let j = 0; j < acceptableDiscs.length; j++){
         if (ans.toLowerCase() === acceptableDiscs[j].toLowerCase()){
            found = true;
+           break;
         }
     }
 
@@ -127,6 +129,9 @@ while (attempts <= numberOfGuessesList && !found){
          numberOfCorrect++;         
     } else {
         alert(ans + ' is not on the list of my top 3 favorite discs. Try again, you have ' + guessesLeft + ' more chance(s).');
+        if(guessesLeft === 0){
+            alert('Boo, no more guesses left.');
+        }
     }
 
     attempts++;
@@ -143,4 +148,3 @@ discListString += ('and ' + acceptableDiscs[lastElement]);
 alert('My top 3 favorite discs are ' + discListString + '.');
 
 alert(userName + ', you got ' + numberOfCorrect + ' answers correct!');
-
