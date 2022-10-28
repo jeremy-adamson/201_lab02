@@ -1,8 +1,8 @@
 'use strict';
 
 // Purpose: To check if user input is one of the valid input values
-// Input: String
-// Output: Returns boolean value if input string is y/n/yes/no
+// Input: String to check and aceptable answers array
+// Output: Returns boolean value if input string is y/n/yes/no (in the array)
 
 function inputChecker(stringToCheck, acceptedAnswers){
     stringToCheck = stringToCheck.toLowerCase();
@@ -31,8 +31,6 @@ function userFeedback(userResponse, correctAnswer){
 let affirmative = ['y', 'yes'];
 let negative = ['n', 'no'];
 let acceptedAnswers = affirmative.concat(negative);
-
-let numberOfCorrect = 0;
 
 // Array of questions to be asked
 let questions = ['Do I like disc golf?',
@@ -65,6 +63,8 @@ let acceptableDiscs = ['crave',
 if (questions.length != answers.length){
     alert('FATAL ERROR - Number of questions does not match number of provided answers. TAG 200');
 }
+
+let numberOfCorrect = 0;
 
 let userName = prompt('Hello! What is your name?');
 
